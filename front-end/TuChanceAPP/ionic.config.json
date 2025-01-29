@@ -1,0 +1,7 @@
+{
+  "name": "TuChanceAPP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
