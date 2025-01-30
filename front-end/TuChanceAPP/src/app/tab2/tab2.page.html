@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Formulario de Estudiante</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #alumnoForm="ngForm" (ngSubmit)="submitForm()">
+    
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="alumno.nombre" name="nombre" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Fecha de Nacimiento</ion-label>
+      <ion-input type="date" [(ngModel)]="alumno.fecha_nacimiento" name="fecha_nacimiento" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nombre del Padre</ion-label>
+      <ion-input type="text" [(ngModel)]="alumno.nombredelpadre" name="nombredelpadre" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nombre de la Madre</ion-label>
+      <ion-input type="text" [(ngModel)]="alumno.nombredelamadre" name="nombredelamadre" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Grado</ion-label>
+      <ion-select [(ngModel)]="alumno.grado" name="grado" required>
+        <ion-select-option *ngFor="let num of grados" [value]="num">{{ num }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Sección</ion-label>
+      <ion-select [(ngModel)]="alumno.seccion" name="seccion" required>
+        <ion-select-option value="A">A</ion-select-option>
+        <ion-select-option value="B">B</ion-select-option>
+        <ion-select-option value="C">C</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Fecha de Ingreso</ion-label>
+      <ion-input type="datetime-local" [(ngModel)]="alumno.fechaingreso" name="fechaingreso" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" type="submit" [disabled]="alumnoForm.invalid">Guardar</ion-button>
+  </form>
+</ion-content>
