@@ -12,7 +12,7 @@ from rest_framework.authtoken.models import Token
 class EstudianteCreateView(generics.CreateAPIView):
     queryset = Estudiante.objects.all()
     serializer_class = EstudianteSerializer
-    authentication_classes = [authentication.BasicAuthentication]
+    #authentication_classes = [authentication.BasicAuthentication]
     permission_classes = [permissions.IsAuthenticated]
 
 class EstudianteListView(generics.ListAPIView):
@@ -26,6 +26,7 @@ class EstudianteListView(generics.ListAPIView):
         return Estudiante.objects.all()
     
 class EstudianteIdGradoListView(generics.ListAPIView):
+    
     serializer_class = EstudianteSerializer
     def get_queryset(self):
         id = self.kwargs['id']
