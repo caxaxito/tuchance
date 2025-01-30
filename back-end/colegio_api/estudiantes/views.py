@@ -1,6 +1,12 @@
 from .models import Estudiante
 from .serializers import EstudianteSerializer
 from rest_framework import generics, authentication, permissions
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authtoken.models import Token
 
 # Create your views here.
 class EstudianteCreateView(generics.CreateAPIView):
@@ -24,4 +30,16 @@ class EstudianteIdGradoListView(generics.ListAPIView):
     def get_queryset(self):
         id = self.kwargs['id']
         return Estudiante.objects.filter(grado=id)
+    
+class LogoutView(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        try:
+            # Eliminar el token del usuario
+            request.auth.delete()
+            return Response({"message": "Sesión cerrada correctamente"}, status=status.HTTP_200_OK)
+        except:
+            return Response({"error": "Algo salió mal"}, status=status.HTTP_400_BAD_REQUEST)
         

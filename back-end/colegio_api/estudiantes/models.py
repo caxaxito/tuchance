@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Estudiante(models.Model):
     nombre = models.CharField(max_length=50)
-    fecha_nacimiento = models.DateTimeField(auto_now_add=True)
+    fecha_nacimiento = models.DateField()
     nombredelpadre = models.CharField(max_length=50)
     nombredelamadre = models.CharField(max_length=50)
     grado = models.IntegerField()
