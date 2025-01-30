@@ -1,17 +1,24 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title>Alumno Por Grado</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+<ion-content>
+  <ion-item>
+    <ion-label>Seleccione el Grado:</ion-label>
+    <ion-select [(ngModel)]="gradoSeleccionado" (ionChange)="getAlumnos($event.detail.value)">
+      <ion-select-option *ngFor="let num of grados" [value]="num">{{ num }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <!-- <ion-button (click)="addStudent()">Agregar Estudiante</ion-button> -->
+  <ion-list>
+    <ion-item *ngFor="let alumno of alumnos">
+      <ion-label>
+        <h1>{{ alumno.nombre }} -- Fecha De Nacimiento: {{ alumno.fecha_nacimiento }}</h1>
+        <p>Grado: {{ alumno.grado }} - Sección: {{ alumno.seccion }} - Sección: {{ alumno.seccion }}</p>
+        <h2>Padre: {{ alumno.nombredelpadre }} - Madre: {{ alumno.nombredelamadre }} - fechaingreso: {{ alumno.fechaingreso }}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
